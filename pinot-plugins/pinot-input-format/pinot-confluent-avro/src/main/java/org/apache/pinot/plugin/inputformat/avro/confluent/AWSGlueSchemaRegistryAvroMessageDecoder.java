@@ -62,4 +62,3 @@ public class AWSGlueSchemaRegistryAvroMessageDecoder implements StreamMessageDec
         return decode(Arrays.copyOfRange(payload, offset, offset + length), destination);
     }
 }
-
