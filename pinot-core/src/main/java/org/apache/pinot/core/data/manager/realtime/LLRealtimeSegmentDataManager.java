@@ -1412,7 +1412,7 @@ public class LLRealtimeSegmentDataManager extends RealtimeSegmentDataManager {
         _resourceTmpDir.mkdirs();
       }
       _state = State.INITIAL_CONSUMING;
-      _latestStreamOffsetAtStartupTime = fetchLatestStreamOffset(5000);
+      _latestStreamOffsetAtStartupTime = fetchLatestStreamOffset(180000);
       _consumeStartTime = now();
       setConsumeEndTime(segmentZKMetadata, _consumeStartTime);
       _segmentCommitterFactory =
@@ -1494,7 +1494,7 @@ public class LLRealtimeSegmentDataManager extends RealtimeSegmentDataManager {
           //  Fix this before opening support for partitioning in Kinesis
           int numPartitionGroups = _partitionMetadataProvider
               .computePartitionGroupMetadata(_clientId, _partitionLevelStreamConfig,
-                  Collections.emptyList(), /*maxWaitTimeMs=*/5000).size();
+                  Collections.emptyList(), /*maxWaitTimeMs=*/180000).size();
 
           if (numPartitionGroups != numPartitions) {
             _segmentLogger.warn(
